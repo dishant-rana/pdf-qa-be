@@ -39,7 +39,6 @@ SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXV
 SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxZHBlcHFicGRsb2RwYWRudndyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIyMTkwMjgsImV4cCI6MjA1Nzc5NTAyOH0.vx97UL49iYkafRLyN3gsia3Bqfj2ISk-XV1C0qfK2PY")
 
 # Initialize Supabase client
-print(SUPABASE_SERVICE_KEY)
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 
 # Security config
@@ -86,8 +85,9 @@ class QuestionResponse(BaseModel):
     timestamp: datetime
 
 # Initialize Anthropic client
+print(os.environ.get("ANTHROPIC_API_KEY"))
 client = anthropic.Anthropic(
-    api_key=os.environ.get("ANTHROPIC_API_KEY", "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")
+    api_key=os.environ.get("ANTHROPIC_API_KEY")
 )
 
 # Security Functions
@@ -434,7 +434,7 @@ async def ask_question(
                     }
                 ]
             )
-            
+            print(message)
             answer = message.content[0].text
             
             # Save question and answer to database
