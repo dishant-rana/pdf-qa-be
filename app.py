@@ -435,7 +435,7 @@ async def ask_question(
                     }
                 ]
             )
-            print(message)
+            print(message,client)
             answer = message.content[0].text
             
             # Save question and answer to database
