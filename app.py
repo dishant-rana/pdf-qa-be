@@ -16,8 +16,6 @@ from passlib.context import CryptContext
 from pydantic import BaseModel
 from supabase import create_client, Client
 import asyncio
-import anthropic
-print(anthropic.__version__)
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -424,6 +422,7 @@ async def ask_question(
         
         # Generate answer using Claude
         try:
+            logger.info(f"Available attributes: {dir(client)}")
             message = client.messages.create(
                 model="claude-3-7-sonnet-20250219",
                 max_tokens=1000,
