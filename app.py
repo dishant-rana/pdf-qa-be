@@ -16,6 +16,8 @@ from passlib.context import CryptContext
 from pydantic import BaseModel
 from supabase import create_client, Client
 import asyncio
+import anthropic
+print(anthropic.__version__)
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
