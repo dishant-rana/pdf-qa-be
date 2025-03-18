@@ -85,7 +85,6 @@ class QuestionResponse(BaseModel):
     timestamp: datetime
 
 # Initialize Anthropic client
-print(os.environ.get("ANTHROPIC_API_KEY"))
 client = anthropic.Anthropic(
     api_key=os.environ.get("ANTHROPIC_API_KEY")
 )
@@ -435,7 +434,6 @@ async def ask_question(
                     }
                 ]
             )
-            print(message,client)
             answer = message.content[0].text
             
             # Save question and answer to database
@@ -508,4 +506,5 @@ async def list_questions(
 # Run the application
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port=int(os.environ.get("PORT",8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
