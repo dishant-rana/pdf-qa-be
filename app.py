@@ -423,7 +423,7 @@ async def ask_question(
         try:
             logger.info(f"Available attributes: {dir(client)}")
             message = client.messages.create(
-                model="claude-3-7-sonnet-20250219",
+                model="claude-3-opus-20240229",
                 max_tokens=1000,
                 temperature=0,
                 system="You are a helpful assistant that answers questions based on the provided PDF documents. Only use information from the provided documents to answer questions. If the information is not in the documents, say you don't know.",
